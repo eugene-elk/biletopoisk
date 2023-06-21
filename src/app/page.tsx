@@ -4,9 +4,14 @@ import styles from './page.module.css'
 export default function Home() {
   return (
     <main className={styles.main}>
-      <h1>Hello</h1>
-      <h1>This is the main page</h1>
-      <h3>Small text</h3>
+      <header className={styles.header}>
+          <span className={styles.headerText}>Билетопоиск</span>
+      </header>
+      <h1 className={styles.text}>This is the main page</h1>
+      <footer className={styles.footer}>
+          <span className={styles.footerText}>Вопросы-ответы</span>
+          <span className={styles.footerText}>О нас</span>
+      </footer>
     </main>
   )
 }
