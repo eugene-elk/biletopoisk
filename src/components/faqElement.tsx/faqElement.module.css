@@ -1,0 +1,48 @@
+.container {
+  width: 100%;
+  padding: 24px;
+  background-color: #FFFFFF;
+  margin-top: 16px;
+  border-radius: 8px;
+
+  border: none;
+  cursor: pointer;
+  outline: inherit;
+  box-shadow: none;
+  appearance: none;
+}
+
+.lineOne {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.header {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #1B1F23;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+}
+
+.lineTwo {
+  text-align: left;
+}
+
+.text {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1B1F23;
+}

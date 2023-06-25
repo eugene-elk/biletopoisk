@@ -1,0 +1,35 @@
+.container {
+  height: 28px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orangeSquare {
+  width: 28px;
+  height: 28px;
+  background-color: #FF5500;
+  margin-right: 8px;
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color 0.2s ease;
+}
+
+.orangeSquare:hover {
+  background-color: #E94E00;
+}
+
+.count {
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}

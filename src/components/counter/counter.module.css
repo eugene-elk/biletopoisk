@@ -1,0 +1,43 @@
+.container {
+  width: 68px;
+  height: 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.orangeSquare {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #FF5500;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color 0.2s ease;
+}
+
+.orangeSquare:hover {
+  background-color: #E94E00;
+}
+
+.orangeSquare.disabled {
+  background-color: #FFA375;
+}
+
+.orangeSquare.disabled:hover {
+  background-color: #FFA375;
+}
+
+.count {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  color: #1B1F23;
+}
