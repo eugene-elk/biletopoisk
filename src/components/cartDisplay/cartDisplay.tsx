@@ -7,6 +7,7 @@ import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectProductAmount} from "@/redux/feature/cart/selector";
 
+// Значок корзины в правом верхнем углу
 export default function CartDisplay() {
 
   const productAmount = useSelector((state) => selectProductAmount(state, "summary"));

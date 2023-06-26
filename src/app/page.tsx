@@ -5,12 +5,38 @@ import InputSearch from "@/components/inputSearch/inputSearch";
 import InputGenre from "@/components/inputGenre/inputGenre";
 import InputCinema from "@/components/inputCinema/inputCinema";
 import { useGetMoviesQuery } from "@/redux/services/movieApi";
-import {ReactElement} from "react";
+import {ReactElement, useContext, useEffect, useState} from "react";
+import {FilterContextProvider} from "@/context/filterContextProvider";
+import {FilterContext} from "@/context/filterContext";
+import {GenreKey, Genres} from "@/assets/dictionaries/genres";
 
 export default function Home() {
+  function Films (): ReactElement {
 
-  const Films = (): ReactElement => {
     const { data, isLoading, error} = useGetMoviesQuery("");
+    const [filmsList, setFilmsList] = useState<any>([]);
+    const { search, genre, cinema } = useContext(FilterContext);
+
+    useEffect(() => {
+      console.log("Search in Films: ", search,", ", genre,", ", cinema);
+      if (isLoading) return;
+      let filteredData = data;
+      if (genre) {
+        filteredData = data.filter((item:any) =>
+          (item.genre in Genres) ?
+            (Genres[item.genre as GenreKey] === genre)
+            :
+            false
+        )
+      }
+      if (cinema) {
+
+      }
+      if (search !== "") {
+        filteredData = filteredData.filter((item:any) => item.title.toLowerCase().includes(search.toLowerCase()));
+      }
+      setFilmsList(filteredData);
+    }, [isLoading, search, genre, cinema, data])
 
     if (isLoading) {
       return (
@@ -21,7 +47,7 @@ export default function Home() {
       return <span className={styles.loadingText}>{"Фильмы не найдены, перезагрузите страницу позже"}</span>
     }
 
-    return data.map((item:any) =>
+    return filmsList.map((item:any) =>
       <FilmElement
         id={item.id}
         key={item.id}
@@ -34,17 +60,19 @@ export default function Home() {
 
   return (
     <div className={styles.main}>
-      <div className={styles.menu}>
-        <span className={styles.filterHeader}>{"Фильтр поиска"}</span>
-        <InputSearch />
-        <InputGenre />
-        <div id={"modal-genre-root"}></div>
-        <InputCinema />
-        <div id={"modal-cinema-root"}></div>
-      </div>
-      <div className={styles.content}>
-        <Films />
-      </div>
+      <FilterContextProvider>
+        <div className={styles.menu}>
+          <span className={styles.filterHeader}>{"Фильтр поиска"}</span>
+          <InputSearch />
+          <InputGenre />
+          <div id={"modal-genre-root"}></div>
+          <InputCinema />
+          <div id={"modal-cinema-root"}></div>
+        </div>
+        <div className={styles.content}>
+          <Films />
+        </div>
+      </FilterContextProvider>
     </div>
   )
 }

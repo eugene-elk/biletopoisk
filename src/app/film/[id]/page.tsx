@@ -5,6 +5,7 @@ import {ReactElement, useEffect} from "react";
 import {useGetMovieQuery, useGetMoviesQuery} from "@/redux/services/movieApi";
 import FilmElement from "@/components/filmElement/filmElement";
 import Image from "next/image";
+import {GenreKey, Genres} from "@/assets/dictionaries/genres";
 
 export default function Film({ params }: { params: { id: number } }) {
 
@@ -38,7 +39,7 @@ export default function Film({ params }: { params: { id: number } }) {
 
           <div className={styles.infoItem}>
             <span className={styles.textInfoBig}>{"Жанр:"}</span>
-            <span className={styles.textInfoSmall}>{data.genre}</span>
+            <span className={styles.textInfoSmall}>{(data.genre in Genres) ? Genres[data.genre as GenreKey] : " "}</span>
           </div>
           <div className={styles.infoItem}>
             <span className={styles.textInfoBig}>{"Год выпуска:"}</span>

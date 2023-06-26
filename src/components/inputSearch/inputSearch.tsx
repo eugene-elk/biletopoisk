@@ -1,9 +1,11 @@
 import styles from "./inputSearch.module.css";
-import {useState} from "react";
+import { useContext } from "react";
+import { FilterContext } from "@/context/filterContext";
+
+
 export default function InputSearch() {
 
-  const [inputValue, setInputValue] = useState("");
-
+  const { search, setSearch } = useContext(FilterContext);
 
   return (
     <div className={styles.container}>
@@ -13,10 +15,11 @@ export default function InputSearch() {
       <input
         placeholder={"Введите название"}
         type="text"
-        value={inputValue}
+        value={search ? search : ""}
         className={styles.input}
         onChange={(event) => {
-          setInputValue(event.target.value)
+          //const newValue = event.target.value;
+          setSearch(event.target.value);
         }}
       />
     </div>

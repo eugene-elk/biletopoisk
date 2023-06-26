@@ -4,6 +4,7 @@ import {createPortal} from "react-dom";
 import ArrowDown from "../../assets/svg/arrow_down_small.svg";
 import ArrowUp from "../../assets/svg/arrow_up_small.svg";
 import Image from "next/image";
+import { FilterContext } from "@/context/filterContext";
 
 export default function InputCinema() {
 

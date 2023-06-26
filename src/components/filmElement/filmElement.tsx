@@ -3,18 +3,18 @@ import styles from "./filmElement.module.css";
 import Cross from "../../assets/svg/cross.svg"
 import Image from "next/image"
 import Counter from "@/components/counter/counter";
-import {useEffect, useState} from "react";
-import {createPortal} from "react-dom";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import ModalDelete from "@/components/modalDelete/modalDelete";
-import {useDispatch, useSelector} from "react-redux";
-import {selectProductAmount} from "@/redux/feature/cart/selector";
-import {cartActions} from "@/redux/feature/cart";
-import {useRouter} from "next/navigation";
+import { useDispatch } from "react-redux";
+import { cartActions } from "@/redux/feature/cart";
+import { useRouter } from "next/navigation";
+import {GenreKey, Genres} from "@/assets/dictionaries/genres";
 
 interface FilmElementParams {
   id: string;
   name: string;
-  genre: string;
+  genre: GenreKey;
   posterUrl: string;
   deleteButton?: boolean;
 }
@@ -55,7 +55,7 @@ export default function FilmElement({ id, name, genre, posterUrl, deleteButton =
       </div>
       <div onClick={() => router.push(`/film/${id}`)} className={styles.containerText}>
         <span className={styles.filmTitle}>{name}</span>
-        <span className={styles.filmGenre}>{genre}</span>
+        <span className={styles.filmGenre}>{Genres[genre] ? Genres[genre] : genre}</span>
       </div>
       <Counter id={id} />
       {deleteButton &&
