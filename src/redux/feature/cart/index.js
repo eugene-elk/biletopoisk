@@ -30,7 +30,7 @@ const cartSlice = createSlice({
     reset: (state, { payload }) => {
       state.summary -= state[payload];
       delete state[payload];
-    }
+    },
   }
 })
 

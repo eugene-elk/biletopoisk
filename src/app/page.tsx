@@ -4,56 +4,21 @@ import FilmElement from "@/components/filmElement/filmElement";
 import InputSearch from "@/components/inputSearch/inputSearch";
 import InputGenre from "@/components/inputGenre/inputGenre";
 import InputCinema from "@/components/inputCinema/inputCinema";
-import {useDispatch} from "react-redux";
-import { useGetMoviesQuery, useGetMovieQuery, useGetMoviesInCinemaQuery } from "@/redux/services/movieApi";
+import { useGetMoviesQuery } from "@/redux/services/movieApi";
+import {ReactElement} from "react";
 
 export default function Home() {
 
-  const content: Array<{id: string, name: string, genre: string}> = [
-    {
-      id: "film-1",
-      name: "Властелин колеc",
-      genre: "Фентези"
-    },
-    {
-      id: "film-2",
-      name: "Гарри Потный",
-      genre: "Фентези"
-    },
-    {
-      id: "film-3",
-      name: "Форсаж 228",
-      genre: "С лысыми"
-    },
-    {
-      id: "film-4",
-      name: "Властелин колеc",
-      genre: "Фентези"
-    },
-    {
-      id: "film-5",
-      name: "Гарри Потный",
-      genre: "Фентези"
-    },
-    {
-      id: "film-6",
-      name: "Форсаж 228",
-      genre: "С лысыми"
-    },
-  ]
-
-  const dispatch = useDispatch();
-
-  const Films = () => {
-    const { data, isLoading, error} = useGetMoviesQuery();
+  const Films = (): ReactElement => {
+    const { data, isLoading, error} = useGetMoviesQuery("");
 
     if (isLoading) {
       return (
-        <span className={styles.loadingText}>{"Loading..."}</span>
+        <span className={styles.loadingText}>{"Загрузка..."}</span>
       )
     }
     if (!data || error) {
-      return <span className={styles.loadingText}>{"Not Found"}</span>
+      return <span className={styles.loadingText}>{"Фильмы не найдены, перезагрузите страницу позже"}</span>
     }
 
     return data.map((item:any) =>

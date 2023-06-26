@@ -95,3 +95,16 @@
   line-height: 20px;
   color: #1B1F23;
 }
+
+.loadingText {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.image {
+  border-radius: 8px;
+  object-fit: cover;
+}

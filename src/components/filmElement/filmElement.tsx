@@ -9,6 +9,7 @@ import ModalDelete from "@/components/modalDelete/modalDelete";
 import {useDispatch, useSelector} from "react-redux";
 import {selectProductAmount} from "@/redux/feature/cart/selector";
 import {cartActions} from "@/redux/feature/cart";
+import {useRouter} from "next/navigation";
 
 interface FilmElementParams {
   id: string;
@@ -24,6 +25,7 @@ export default function FilmElement({ id, name, genre, posterUrl, deleteButton =
   const [modalRoot, setModalRoot] = useState<Element | DocumentFragment | null>(null);
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() => {
     setModalRoot(document.getElementById('modal-root'));
@@ -42,7 +44,7 @@ export default function FilmElement({ id, name, genre, posterUrl, deleteButton =
 
   return (
     <div className={styles.container}>
-      <div className={styles.containerImage}>
+      <div onClick={() => router.push(`/film/${id}`)} className={styles.containerImage}>
         <Image
           width={100}
           height={120}
@@ -51,7 +53,7 @@ export default function FilmElement({ id, name, genre, posterUrl, deleteButton =
           alt={name}
         />
       </div>
-      <div className={styles.containerText}>
+      <div onClick={() => router.push(`/film/${id}`)} className={styles.containerText}>
         <span className={styles.filmTitle}>{name}</span>
         <span className={styles.filmGenre}>{genre}</span>
       </div>
