@@ -1,8 +1,8 @@
 'use client'
 import {Dispatch, SetStateAction, useEffect, useLayoutEffect, useRef, useState} from "react";
 import styles from './faqElement.module.css'
-import ArrowDown from '../../assets/arrow_down.svg'
-import ArrowUp from  '../../assets/arrow_up.svg'
+import ArrowDown from '../../assets/svg/arrow_down.svg'
+import ArrowUp from '../../assets/svg/arrow_up.svg'
 import Image from "next/image";
 
 interface FaqElementProps {

@@ -1,5 +1,5 @@
 import styles from "./review.module.css";
-import Placeholder from '../../assets/img_placeholder.svg';
+import Placeholder from '../../assets/svg/img_placeholder.svg';
 import Image from "next/image";
 
 interface ReviewParams {

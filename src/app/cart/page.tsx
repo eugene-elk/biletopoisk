@@ -29,9 +29,11 @@ export default function Cart() {
     <div className={styles.container}>
       {cartItems.map((item) =>
         <FilmElement
+          id={item.id}
           key={item.id}
           name={item.name}
           genre={item.genre}
+          posterUrl={""}
           deleteButton={true}
         />
       )}

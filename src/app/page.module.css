@@ -8,10 +8,20 @@
 }
 
 .menu {
-  height: 300px;
+  height: min-content;
   width: 408px;
   border-radius: 8px;
   background-color: #FFFFFF;
+  padding: 24px;
+}
+
+.filterHeader {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #1B1F23;
 }
 
 .content {
@@ -19,6 +29,14 @@
   margin-left: 23px;
   background-color: transparent;
   border-radius: 8px;
+}
+
+.loadingText {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 

@@ -1,0 +1,99 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.name {
+  font-family: 'SF Pro', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #1B1F23;
+  margin-bottom: 4px;
+}
+
+.selectWrapper {
+  position: relative;
+  width: 360px;
+  height: 40px;
+  cursor: pointer;
+
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #E1E3E6;
+  border-width: 2px;
+  background: transparent;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.selectWrapperActive {
+  border-color: #FF5500;
+  border-width: 2px;
+  box-sizing: border-box;
+}
+
+.selectHeader {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-left: 16px;
+  padding-right: 16px;
+
+  width: 330px;
+
+  font-family: 'SF Pro', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.selectPlaceholder {
+  color: #999FA6;
+}
+
+.selectList {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  margin-top: 4px;
+  background: #ffffff;
+  border: 1px solid #E1E3E6;
+  border-radius: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  max-height: 20em;
+  z-index: 10;
+  width: 360px;
+}
+
+.selectItem {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 12px;
+  height: 40px;
+  cursor: pointer;
+
+  font-family: 'SF Pro', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.selectItem:hover {
+  background-color: #ddd;
+  border-radius: 4px;
+}

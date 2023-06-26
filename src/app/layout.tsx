@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Link from "next/link";
 import CartDisplay from "@/components/cartDisplay/cartDisplay";
+import {StoreProvider} from "@/redux/storeProvider";
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -18,17 +19,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header>
-          <span className={"headerText"}><Link href="/">Билетопоиск</Link></span>
-          <CartDisplay/>
-        </header>
-        <main>
-          {children}
-        </main>
-        <footer>
-          <span className={"footerText"}><Link href="/faq">Вопросы-ответы</Link></span>
-          <span className={"footerText"}><Link href="/about">О нас</Link></span>
-        </footer>
+        <StoreProvider>
+          <header>
+            <span className={"headerText"}><Link href="/">Билетопоиск</Link></span>
+            <CartDisplay/>
+          </header>
+          <main id="main-root">
+            {children}
+          </main>
+          <footer>
+            <span className={"footerText"}><Link href="/faq">Вопросы-ответы</Link></span>
+            <span className={"footerText"}><Link href="/about">О нас</Link></span>
+          </footer>
+          <div id={"modal-root"}></div>
+        </StoreProvider>
       </body>
     </html>
   )
