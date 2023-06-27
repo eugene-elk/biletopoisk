@@ -1,10 +1,11 @@
 import styles from "./inputSearch.module.css";
-import {useContext} from "react";
-import {FilterContext} from "@/context/filterContext";
+import {useContext, useState} from "react";
+import {SetFilterContext} from "@/context/filterContext";
 
 export default function InputSearch() {
 
-  const { search, setSearch } = useContext(FilterContext);
+  const [localSearch, setLocalSearch] = useState("");
+  const { setSearch } = useContext(SetFilterContext)
 
   return (
     <div className={styles.container}>
@@ -14,10 +15,11 @@ export default function InputSearch() {
       <input
         placeholder={"Введите название"}
         type="text"
-        value={search ? search : ""}
+        value={localSearch}
         className={styles.input}
         onChange={(event) => {
           //const newValue = event.target.value;
+          setLocalSearch(event.target.value)
           setSearch(event.target.value);
         }}
       />

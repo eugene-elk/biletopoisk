@@ -5,16 +5,17 @@ import ArrowDown from "../../assets/svg/arrow_down_small.svg";
 import ArrowUp from "../../assets/svg/arrow_up_small.svg";
 import Image from "next/image";
 import {Genres} from "@/assets/dictionaries/genres";
-import {FilterContext} from "@/context/filterContext";
+import {SetFilterContext} from "@/context/filterContext";
 
 export default function InputGenre() {
 
   const options = Object.values(Genres);
 
+  const [localGenre, setLocalGenre] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [modalRoot, setModalRoot] = useState<Element | DocumentFragment | null>(null);
 
-  const { genre, setGenre } = useContext(FilterContext);
+  const { setGenre } = useContext(SetFilterContext);
 
   useEffect(() => {
     setModalRoot(document.getElementById('modal-genre-root'));
@@ -23,6 +24,7 @@ export default function InputGenre() {
   const toggling = () => setIsOpen(!isOpen);
 
   const onOptionClicked = (value: string | null) => () => {
+    setLocalGenre(value)
     setGenre(value);
     setIsOpen(false);
   };
@@ -51,8 +53,8 @@ export default function InputGenre() {
         onClick={toggling}
         className={`${styles.selectWrapper} ${isOpen ? styles.selectWrapperActive : ""}`}
       >
-        <div className={`${styles.selectHeader} ${!genre ? styles.selectPlaceholder : ""}`}>
-          {genre || "Выберите жанр"}
+        <div className={`${styles.selectHeader} ${!localGenre ? styles.selectPlaceholder : ""}`}>
+          {localGenre || "Выберите жанр"}
         </div>
         {isOpen ?
           <Image src={ArrowUp} alt={""} />

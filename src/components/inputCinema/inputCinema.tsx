@@ -4,7 +4,7 @@ import {createPortal} from "react-dom";
 import ArrowDown from "../../assets/svg/arrow_down_small.svg";
 import ArrowUp from "../../assets/svg/arrow_up_small.svg";
 import Image from "next/image";
-import {FilterContext} from "@/context/filterContext";
+import {SetFilterContext} from "@/context/filterContext";
 import {useGetCinemasQuery} from "@/redux/services/cinemaApi";
 import {CinemaType} from "@/types/cinema";
 
@@ -15,7 +15,7 @@ export default function InputCinema() {
   const [modalRoot, setModalRoot] = useState<Element | DocumentFragment | null>(null);
   const [options, setOptions] = useState<Array<string>>([]);
 
-  const { setCinemas } = useContext(FilterContext);
+  const { setCinemas } = useContext(SetFilterContext);
   const { data, isLoading, error} = useGetCinemasQuery("");
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import {ReactNode, useState} from "react";
-import {FilterContext} from "@/context/filterContext";
+import {FilterContext, SetFilterContext} from "@/context/filterContext";
 
 export const FilterContextProvider = ({ children }: {children: ReactNode}) => {
   const [search, setSearch] = useState<string>("");
@@ -7,8 +7,10 @@ export const FilterContextProvider = ({ children }: {children: ReactNode}) => {
   const [cinemas, setCinemas] = useState<string[]>([]);
 
   return (
-    <FilterContext.Provider value={{ search, genre, cinemas, setSearch, setGenre, setCinemas }}>
-      {children}
+    <FilterContext.Provider value={{search, genre, cinemas }}>
+      <SetFilterContext.Provider value={{setSearch, setGenre, setCinemas}}>
+        {children}
+      </SetFilterContext.Provider>
     </FilterContext.Provider>
   );
 };
