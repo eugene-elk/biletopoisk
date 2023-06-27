@@ -16,7 +16,7 @@ export default function Cart() {
   const [cartToShow, setCartToShow] = useState([]);
 
   useEffect(() => {
-    if (isLoading) return;
+    if (isLoading || !data || error) return;
 
     let idsInCart: string[] = [];
 
@@ -28,7 +28,7 @@ export default function Cart() {
     let newCartToShow = data.filter((element: any) => idsInCart.includes(element.id));
     setCartToShow(newCartToShow);
 
-  }, [isLoading, cartContent, data])
+  }, [isLoading, cartContent, data, error])
 
   if (cartToShow.length === 0) {
     return (

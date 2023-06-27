@@ -18,7 +18,7 @@ export default function InputCinema() {
   const { data, isLoading, error} = useGetCinemasQuery("");
 
   useEffect(() => {
-    if (isLoading) return;
+    if ((isLoading) || !data || error)  return;
     setOptions(data.map((item:any) => item.name));
   }, [data, isLoading, error])
 

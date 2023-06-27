@@ -19,7 +19,7 @@ export default function Home() {
 
     useEffect(() => {
       console.log("Search in Films: ", search,", ", genre,", ", cinemas);
-      if (isLoading) return;
+      if (isLoading || !data || error) return;
       let filteredData = data;
       if (genre) {
         filteredData = data.filter((item:any) =>
@@ -36,13 +36,14 @@ export default function Home() {
         filteredData = filteredData.filter((item:any) => item.title.toLowerCase().includes(search.toLowerCase()));
       }
       setFilmsList(filteredData);
-    }, [isLoading, search, genre, cinemas, data])
+    }, [data, isLoading, error, search, genre, cinemas])
 
     if (isLoading) {
       return (
         <span className={styles.loadingText}>{"Загрузка..."}</span>
       )
     }
+
     if (!data || error) {
       return <span className={styles.loadingText}>{"Фильмы не найдены, перезагрузите страницу позже"}</span>
     }
