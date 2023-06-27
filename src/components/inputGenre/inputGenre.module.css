@@ -74,7 +74,6 @@
   box-sizing: border-box;
   cursor: pointer;
   max-height: 20em;
-  z-index: 10;
   width: 360px;
 }
 

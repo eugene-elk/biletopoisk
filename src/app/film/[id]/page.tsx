@@ -2,20 +2,22 @@
 import styles from './film.module.css'
 import Review from "@/components/review.tsx/review";
 import {ReactElement, useEffect} from "react";
+import { useGetReviewsForMovieQuery } from "@/redux/services/reviewApi";
 import {useGetMovieQuery, useGetMoviesQuery} from "@/redux/services/movieApi";
 import FilmElement from "@/components/filmElement/filmElement";
 import Image from "next/image";
 import {GenreKey, Genres} from "@/assets/dictionaries/genres";
 
+
 export default function Film({ params }: { params: { id: number } }) {
 
+  const { data, isLoading, error } = useGetReviewsForMovieQuery(params.id);
+
   const FilmInfo = (): ReactElement => {
-    const { data, isLoading, error} = useGetMovieQuery(params.id);
+    const { data, isLoading, error } = useGetMovieQuery(params.id);
 
     if (isLoading) {
-      return (
-        <span className={styles.loadingText}>{"Загрузка..."}</span>
-      )
+      return <span className={styles.loadingText}>{"Загрузка..."}</span>
     }
     if (!data || error) {
       return <span className={styles.loadingText}>{"Фильм не найден =("}</span>
@@ -88,7 +90,6 @@ export default function Film({ params }: { params: { id: number } }) {
           mark={review.mark}
         />
       )}
-
     </div>
   )
 }

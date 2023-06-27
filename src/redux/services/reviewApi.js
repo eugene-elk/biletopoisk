@@ -10,4 +10,4 @@ export const reviewApi = createApi({
 });
 
 
-export const { useGetReviewsQuery, useGetReviewsForMovie } = reviewApi;
+export const { useGetReviewsQuery, useGetReviewsForMovieQuery } = reviewApi;

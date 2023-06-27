@@ -31,7 +31,7 @@ export default function InputGenre() {
 
   function ModalGenre() {
     return (
-      <div className={styles.selectList}>
+      <div className={styles.selectList} style={{zIndex: 10}}>
         <div onClick={onOptionClicked(null)} className={styles.selectItem}>
           {"Не выбран"}
         </div>

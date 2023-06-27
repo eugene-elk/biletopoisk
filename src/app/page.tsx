@@ -15,10 +15,10 @@ export default function Home() {
 
     const { data, isLoading, error} = useGetMoviesQuery("");
     const [filmsList, setFilmsList] = useState<any>([]);
-    const { search, genre, cinema } = useContext(FilterContext);
+    const { search, genre, cinemas } = useContext(FilterContext);
 
     useEffect(() => {
-      console.log("Search in Films: ", search,", ", genre,", ", cinema);
+      console.log("Search in Films: ", search,", ", genre,", ", cinemas);
       if (isLoading) return;
       let filteredData = data;
       if (genre) {
@@ -29,14 +29,14 @@ export default function Home() {
             false
         )
       }
-      if (cinema) {
-
+      if (cinemas.length > 0) {
+        filteredData = filteredData.filter((item:any) => cinemas.includes(item.id));
       }
       if (search !== "") {
         filteredData = filteredData.filter((item:any) => item.title.toLowerCase().includes(search.toLowerCase()));
       }
       setFilmsList(filteredData);
-    }, [isLoading, search, genre, cinema, data])
+    }, [isLoading, search, genre, cinemas, data])
 
     if (isLoading) {
       return (
