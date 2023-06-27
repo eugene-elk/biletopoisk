@@ -3,12 +3,12 @@ import styles from "./filmElement.module.css";
 import Cross from "../../assets/svg/cross.svg"
 import Image from "next/image"
 import Counter from "@/components/counter/counter";
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import {useEffect, useState} from "react";
+import {createPortal} from "react-dom";
 import ModalDelete from "@/components/modalDelete/modalDelete";
-import { useDispatch } from "react-redux";
-import { cartActions } from "@/redux/feature/cart";
-import { useRouter } from "next/navigation";
+import {useDispatch} from "react-redux";
+import {cartActions} from "@/redux/feature/cart";
+import {useRouter} from "next/navigation";
 import {GenreKey, Genres} from "@/assets/dictionaries/genres";
 
 interface FilmElementParams {

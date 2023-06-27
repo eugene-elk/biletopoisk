@@ -4,7 +4,7 @@ import FilmElement from "@/components/filmElement/filmElement";
 import InputSearch from "@/components/inputSearch/inputSearch";
 import InputGenre from "@/components/inputGenre/inputGenre";
 import InputCinema from "@/components/inputCinema/inputCinema";
-import { useGetMoviesQuery } from "@/redux/services/movieApi";
+import {useGetMoviesQuery} from "@/redux/services/movieApi";
 import {ReactElement, useContext, useEffect, useState} from "react";
 import {FilterContextProvider} from "@/context/filterContextProvider";
 import {FilterContext} from "@/context/filterContext";

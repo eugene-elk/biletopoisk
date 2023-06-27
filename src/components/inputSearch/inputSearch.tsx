@@ -1,6 +1,6 @@
 import styles from "./inputSearch.module.css";
-import { useContext } from "react";
-import { FilterContext } from "@/context/filterContext";
+import {useContext} from "react";
+import {FilterContext} from "@/context/filterContext";
 
 export default function InputSearch() {
 

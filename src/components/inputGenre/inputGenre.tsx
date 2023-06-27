@@ -5,14 +5,13 @@ import ArrowDown from "../../assets/svg/arrow_down_small.svg";
 import ArrowUp from "../../assets/svg/arrow_up_small.svg";
 import Image from "next/image";
 import {Genres} from "@/assets/dictionaries/genres";
-import { FilterContext } from "@/context/filterContext";
+import {FilterContext} from "@/context/filterContext";
 
 export default function InputGenre() {
 
   const options = Object.values(Genres);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string|null>(null);
   const [modalRoot, setModalRoot] = useState<Element | DocumentFragment | null>(null);
 
   const { genre, setGenre } = useContext(FilterContext);
@@ -25,7 +24,6 @@ export default function InputGenre() {
 
   const onOptionClicked = (value: string | null) => () => {
     setGenre(value);
-    setSelectedOption(value);
     setIsOpen(false);
   };
 

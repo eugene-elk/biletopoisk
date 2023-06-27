@@ -1,7 +1,5 @@
 'use client'
-
 import styles from './faq.module.css'
-import {useState} from "react";
 import FaqElement from "@/components/faqElement.tsx/faqElement";
 
 export default function Faq() {

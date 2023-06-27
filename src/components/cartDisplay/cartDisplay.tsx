@@ -3,8 +3,7 @@ import styles from './cartDisplay.module.css'
 import cartImage from '../../assets/svg/cart.svg'
 import Image from 'next/image'
 import Link from 'next/link'
-import {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {selectProductAmount} from "@/redux/feature/cart/selector";
 
 // Значок корзины в правом верхнем углу

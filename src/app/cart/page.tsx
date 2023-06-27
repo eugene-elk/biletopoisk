@@ -1,11 +1,10 @@
 'use client'
 import styles from './cart.module.css'
-import Review from "@/components/review.tsx/review";
 import FilmElement from "@/components/filmElement/filmElement";
-import { useSelector } from "react-redux";
-import { selectCartModule, selectProductAmount } from "@/redux/feature/cart/selector";
-import { useEffect, useState } from "react";
-import { useGetMoviesQuery } from "@/redux/services/movieApi";
+import {useSelector} from "react-redux";
+import {selectCartModule, selectProductAmount} from "@/redux/feature/cart/selector";
+import {useEffect, useState} from "react";
+import {useGetMoviesQuery} from "@/redux/services/movieApi";
 
 export default function Cart() {
 

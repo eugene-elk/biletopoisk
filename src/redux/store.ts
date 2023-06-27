@@ -1,8 +1,8 @@
-import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
-import { cartReducer } from "@/redux/feature/cart";
-import { movieApi } from "@/redux/services/movieApi";
-import { reviewApi } from "@/redux/services/reviewApi";
-import { cinemaApi } from "@/redux/services/cinemaApi";
+import {configureStore} from "@reduxjs/toolkit";
+import {cartReducer} from "@/redux/feature/cart";
+import {movieApi} from "@/redux/services/movieApi";
+import {reviewApi} from "@/redux/services/reviewApi";
+import {cinemaApi} from "@/redux/services/cinemaApi";
 
 export const store = configureStore({
   reducer: {

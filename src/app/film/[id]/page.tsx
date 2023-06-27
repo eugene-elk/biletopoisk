@@ -1,10 +1,9 @@
 'use client'
 import styles from './film.module.css'
 import Review from "@/components/review.tsx/review";
-import {ReactElement, useEffect} from "react";
-import { useGetReviewsForMovieQuery } from "@/redux/services/reviewApi";
-import {useGetMovieQuery, useGetMoviesQuery} from "@/redux/services/movieApi";
-import FilmElement from "@/components/filmElement/filmElement";
+import {ReactElement} from "react";
+import {useGetReviewsForMovieQuery} from "@/redux/services/reviewApi";
+import {useGetMovieQuery} from "@/redux/services/movieApi";
 import Image from "next/image";
 import {GenreKey, Genres} from "@/assets/dictionaries/genres";
 import Counter from "@/components/counter/counter";

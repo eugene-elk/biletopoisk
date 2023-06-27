@@ -1,5 +1,5 @@
 'use client'
-import {Dispatch, SetStateAction, useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import styles from './faqElement.module.css'
 import ArrowDown from '../../assets/svg/arrow_down.svg'
 import ArrowUp from '../../assets/svg/arrow_up.svg'
