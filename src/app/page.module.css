@@ -9,10 +9,17 @@
 }
 
 .menu {
+  position: fixed;
   height: min-content;
   width: 408px;
   border-radius: 8px;
   background-color: #FFFFFF;
+  padding: 24px;
+}
+
+.menuPlaceholder {
+  min-width: 408px;
+  height: 100vh;
   padding: 24px;
 }
 

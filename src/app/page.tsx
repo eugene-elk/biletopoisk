@@ -61,6 +61,7 @@ export default function Home() {
   return (
     <div className={styles.main}>
       <FilterContextProvider>
+        <div className={styles.menuPlaceholder}/>
         <div className={styles.menu}>
           <span className={styles.filterHeader}>{"Фильтр поиска"}</span>
           <InputSearch />
@@ -69,6 +70,7 @@ export default function Home() {
           <InputCinema />
           <div id={"modal-cinema-root"}></div>
         </div>
+
         <div className={styles.content}>
           <Films />
         </div>
