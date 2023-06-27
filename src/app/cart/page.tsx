@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import {selectCartModule, selectProductAmount} from "@/redux/feature/cart/selector";
 import {useEffect, useState} from "react";
 import {useGetMoviesQuery} from "@/redux/services/movieApi";
+import {MovieType} from "@/types/movie";
 
 export default function Cart() {
 
@@ -12,7 +13,7 @@ export default function Cart() {
   const cartContent = useSelector((state) => selectCartModule(state));
   const { data, isLoading, error } = useGetMoviesQuery("");
 
-  const [cartToShow, setCartToShow] = useState([]);
+  const [cartToShow, setCartToShow] = useState<MovieType[]>([]);
 
   useEffect(() => {
     if (isLoading || !data || error) return;
@@ -24,7 +25,7 @@ export default function Cart() {
       idsInCart.push(cartElement);
     });
 
-    let newCartToShow = data.filter((element: any) => idsInCart.includes(element.id));
+    let newCartToShow = data.filter((element: MovieType) => idsInCart.includes(element.id));
     setCartToShow(newCartToShow);
 
   }, [isLoading, cartContent, data, error])
@@ -40,16 +41,16 @@ export default function Cart() {
   return (
     <div className={styles.container}>
       <div>
-      {cartToShow.map((item:any) =>
-        <FilmElement
-          id={item.id}
-          key={item.id}
-          name={item.title}
-          genre={item.genre}
-          posterUrl={item.posterUrl}
-          deleteButton={true}
-        />
-      )}
+        {cartToShow.map((item: MovieType) =>
+          <FilmElement
+            id={item.id}
+            key={item.id}
+            name={item.title}
+            genre={item.genre}
+            posterUrl={item.posterUrl}
+            deleteButton={true}
+          />
+        )}
       </div>
       <div className={styles.summary}>
         <span className={styles.summaryText}>{"Итого билетов:"}</span>

@@ -6,11 +6,12 @@ import ArrowUp from "../../assets/svg/arrow_up_small.svg";
 import Image from "next/image";
 import {FilterContext} from "@/context/filterContext";
 import {useGetCinemasQuery} from "@/redux/services/cinemaApi";
+import {CinemaType} from "@/types/cinema";
 
 export default function InputCinema() {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string|null>(null);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [modalRoot, setModalRoot] = useState<Element | DocumentFragment | null>(null);
   const [options, setOptions] = useState<Array<string>>([]);
 
@@ -19,7 +20,7 @@ export default function InputCinema() {
 
   useEffect(() => {
     if ((isLoading) || !data || error)  return;
-    setOptions(data.map((item:any) => item.name));
+    setOptions(data.map((item: CinemaType) => item.name));
   }, [data, isLoading, error])
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function InputCinema() {
       return;
     }
 
-    const currentData = data.filter((item:any) => (item.name === value))[0];
+    const currentData = data.filter((item: CinemaType) => (item.name === value))[0];
     setCinemas(currentData.movieIds);
   };
 

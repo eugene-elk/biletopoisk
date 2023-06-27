@@ -7,6 +7,7 @@ import {useGetMovieQuery} from "@/redux/services/movieApi";
 import Image from "next/image";
 import {GenreKey, Genres} from "@/assets/dictionaries/genres";
 import Counter from "@/components/counter/counter";
+import {ReviewType} from "@/types/review";
 
 export default function Film({ params }: { params: { id: string } }) {
 
@@ -84,7 +85,7 @@ export default function Film({ params }: { params: { id: string } }) {
   return (
     <div className={styles.container}>
       <FilmInfo />
-      {data.map((review: any) =>
+      {data.map((review: ReviewType) =>
         <Review
           key={review.id}
           name={review.name}
