@@ -28,7 +28,7 @@
 .containerText {
   padding-left: 24px;
   height: 100%;
-  flex: 1;
+  flex-grow: 1;
 
   display: flex;
   justify-content: flex-start;
