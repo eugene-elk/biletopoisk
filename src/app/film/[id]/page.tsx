@@ -11,7 +11,14 @@ import {GenreKey, Genres} from "@/assets/dictionaries/genres";
 
 export default function Film({ params }: { params: { id: number } }) {
 
-  const { data, isLoading, error } = useGetReviewsForMovieQuery(params.id);
+  function InfoElement ({title, value}: {title: string, value: string | number}) {
+    return (
+      <div className={styles.infoItem}>
+        <span className={styles.textInfoBig}>{title}</span>
+        <span className={styles.textInfoSmall}>{value}</span>
+      </div>
+    )
+  }
 
   const FilmInfo = (): ReactElement => {
     const { data, isLoading, error } = useGetMovieQuery(params.id);
@@ -39,22 +46,22 @@ export default function Film({ params }: { params: { id: number } }) {
             <span className={styles.textHeader}>{data.title}</span>
           </div>
 
-          <div className={styles.infoItem}>
-            <span className={styles.textInfoBig}>{"Жанр:"}</span>
-            <span className={styles.textInfoSmall}>{(data.genre in Genres) ? Genres[data.genre as GenreKey] : " "}</span>
-          </div>
-          <div className={styles.infoItem}>
-            <span className={styles.textInfoBig}>{"Год выпуска:"}</span>
-            <span className={styles.textInfoSmall}>{data.releaseYear}</span>
-          </div>
-          <div className={styles.infoItem}>
-            <span className={styles.textInfoBig}>{"Рейтинг:"}</span>
-            <span className={styles.textInfoSmall}>{data.rating}</span>
-          </div>
-          <div className={styles.infoItem}>
-            <span className={styles.textInfoBig}>{"Режиссер:"}</span>
-            <span className={styles.textInfoSmall}>{data.director}</span>
-          </div>
+          <InfoElement
+            title={"Жанр:"}
+            value={(data.genre in Genres) ? Genres[data.genre as GenreKey] : " "}
+          />
+          <InfoElement
+            title={"Год выпуска:"}
+            value={data.releaseYear}
+          />
+          <InfoElement
+            title={"Рейтинг:"}
+            value={data.rating}
+          />
+          <InfoElement
+            title={"Режиссер:"}
+            value={data.director}
+          />
 
           <span className={styles.descriptionWord}>Описание</span>
           <span className={styles.descriptionText}>{data.description}</span>
@@ -79,15 +86,25 @@ export default function Film({ params }: { params: { id: number } }) {
     },
   ]
 
+  const { data, isLoading, error } = useGetReviewsForMovieQuery(params.id);
+
+  if (isLoading) {
+    return (
+      <div className={styles.container}>
+        <FilmInfo />
+      </div>
+    )
+  }
+
   return (
     <div className={styles.container}>
       <FilmInfo />
-      {reviews.map((review) =>
+      {data.map((review: any) =>
         <Review
           key={review.id}
           name={review.name}
           text={review.text}
-          mark={review.mark}
+          mark={review.rating}
         />
       )}
     </div>
