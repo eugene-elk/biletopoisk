@@ -3,26 +3,38 @@ import styles from "./counter.module.css";
 import Plus from "../../assets/svg/plus.svg";
 import Minus from "../../assets/svg/minus.svg";
 import Image from "next/image";
-import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectProductAmount} from "@/redux/feature/cart/selector";
 import {cartActions} from "@/redux/feature/cart";
+import {usePathname} from "next/navigation";
 
 interface CounterParams {
   id: string;
+  callbackShowModal?: () => void;
 }
 
-export default function Counter ({ id }: CounterParams){
+export default function Counter ({ id, callbackShowModal }: CounterParams){
 
   const productAmount = useSelector((state) => selectProductAmount(state, id));
-  const [count, setCount] = useState(0);
 
+  const pathname = usePathname();
   const dispatch = useDispatch();
 
   return (
     <div className={styles.container}>
       <div
-        onClick={()=>dispatch(cartActions.decrement(id))}
+        onClick={()=> {
+          if (pathname !== "/cart") {
+            dispatch(cartActions.decrement(id));
+            return;
+          }
+          if (productAmount === 1) {
+            if (callbackShowModal) callbackShowModal();
+            else dispatch(cartActions.decrement(id));
+            return;
+          }
+          dispatch(cartActions.decrement(id));
+        }}
         className={`${styles.orangeSquare} ${productAmount === 0 ? styles.disabled : ""}`}
       >
         <Image src={Minus} alt={""}/>

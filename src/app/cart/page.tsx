@@ -9,6 +9,7 @@ import { useGetMoviesQuery } from "@/redux/services/movieApi";
 
 export default function Cart() {
 
+  const productAmount = useSelector((state) => selectProductAmount(state, "summary"));
   const cartContent = useSelector((state) => selectCartModule(state));
   const { data, isLoading, error } = useGetMoviesQuery("");
 
@@ -39,6 +40,7 @@ export default function Cart() {
 
   return (
     <div className={styles.container}>
+      <div>
       {cartToShow.map((item:any) =>
         <FilmElement
           id={item.id}
@@ -49,6 +51,11 @@ export default function Cart() {
           deleteButton={true}
         />
       )}
+      </div>
+      <div className={styles.summary}>
+        <span className={styles.summaryText}>{"Итого билетов:"}</span>
+        <span className={styles.summaryText}>{productAmount}</span>
+      </div>
     </div>
   )
 }

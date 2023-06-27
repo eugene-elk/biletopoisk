@@ -57,7 +57,10 @@ export default function FilmElement({ id, name, genre, posterUrl, deleteButton =
         <span className={styles.filmTitle}>{name}</span>
         <span className={styles.filmGenre}>{Genres[genre] ? Genres[genre] : genre}</span>
       </div>
-      <Counter id={id} />
+      <Counter
+        id={id}
+        callbackShowModal={() => setIsModalOpen(true)}
+      />
       {deleteButton &&
         <div onClick={() => {setIsModalOpen(val => !val)}} className={styles.deleteButton}>
           <Image src={Cross} alt={""} />

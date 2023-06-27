@@ -7,9 +7,9 @@ import {useGetMovieQuery, useGetMoviesQuery} from "@/redux/services/movieApi";
 import FilmElement from "@/components/filmElement/filmElement";
 import Image from "next/image";
 import {GenreKey, Genres} from "@/assets/dictionaries/genres";
+import Counter from "@/components/counter/counter";
 
-
-export default function Film({ params }: { params: { id: number } }) {
+export default function Film({ params }: { params: { id: string } }) {
 
   function InfoElement ({title, value}: {title: string, value: string | number}) {
     return (
@@ -44,6 +44,7 @@ export default function Film({ params }: { params: { id: number } }) {
         <div className={styles.textContainer}>
           <div className={styles.headerContainer}>
             <span className={styles.textHeader}>{data.title}</span>
+            <Counter id={params.id}/>
           </div>
 
           <InfoElement

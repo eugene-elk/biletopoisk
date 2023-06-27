@@ -2,5 +2,39 @@
   padding-top: 24px;
   padding-left: 32px;
   padding-right: 32px;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
+.text {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #1B1F23;
+}
+
+.summary {
+  background-color: white;
+  padding: 24px;
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 24px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.summaryText {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  color: #1B1F23;
+}
